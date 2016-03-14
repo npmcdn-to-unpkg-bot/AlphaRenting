@@ -10,13 +10,15 @@ namespace AlphaRenting
 {
     public class DB
     {
+        private static string DB_HOST { get { return "localhost"; } }
+        private static string DB_USER { get { return "root"; } }
         private static string DB_NAME { get { return "AlphaRenting"; } }
         private static string DB_PASSWD { get { return "$1mN0tAw34kP4ssw0rd$"; } }
-        public static MySqlConnection Open()
+        private static MySqlConnection Open()
         {
             try
             {
-                string login = string.Format("Server=localhost; database={0}; UID=root; password={1}", DB_NAME, DB_PASSWD);
+                string login = string.Format("Server={0}; database={1}; UID={2}; password={3}", DB_HOST, DB_NAME, DB_USER, DB_PASSWD);
                 MySqlConnection connexion = new MySqlConnection(login);
                 connexion.Open();
 
@@ -28,7 +30,7 @@ namespace AlphaRenting
             }
         }
 
-        public static List<MySqlParameter> GetListParameters(params object[] param)
+        private static List<MySqlParameter> GetListParameters(params object[] param)
         {
             try
             {
@@ -62,7 +64,7 @@ namespace AlphaRenting
             }
         }
 
-        public static string GenerateParameters(int count)
+        private static string GenerateParameters(int count)
         {
             string ret = null;
             for(int i=1; i<= count; i++)
@@ -72,7 +74,7 @@ namespace AlphaRenting
             return ret.Remove(ret.Length-1);
         }
 
-        public static string GenerateSetParameters(string setfields)
+        private static string GenerateSetParameters(string setfields)
         {
             string[] split = setfields.Split(',');
             string newupdatefield = null;
@@ -83,11 +85,11 @@ namespace AlphaRenting
             return newupdatefield.Remove(newupdatefield.Length - 1);
         }
 
-        public static string GenerateWhereParameters(string wherefields)
+        private static string GenerateWhereParameters(string wherefields)
         {
             return GenerateWhereParameters(wherefields, 0);
         }
-        public static string GenerateWhereParameters(string wherefields, int offset)
+        private static string GenerateWhereParameters(string wherefields, int offset)
         {
             string[] split = wherefields.Split(',');
             string newwherefields = null;
@@ -113,12 +115,83 @@ namespace AlphaRenting
                 cmd.Connection = con;
                 cmd.Parameters.AddRange(GetListParameters(param).ToArray());
 
-                return cmd.ExecuteNonQuery();
+                int result = cmd.ExecuteNonQuery();
+                con.Close();
+
+                return result;
             }
             catch
             {
                 return 0;
             }
+        }
+
+        public static MySqlDataReader ExecuteReader(string sql, params object[] param)
+        {
+            try
+            {
+                MySqlConnection con = Open();
+                if (con == null)
+                    return null;
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = sql;
+                cmd.Connection = con;
+                cmd.Parameters.AddRange(GetListParameters(param).ToArray());
+
+                MySqlDataReader mdr = cmd.ExecuteReader();
+
+                return mdr;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static MySqlDataReader Select(string tablename, string selectfields, string wherefields, params object[] param)
+        {
+            MySqlDataReader mdr = null;
+            if (!string.IsNullOrWhiteSpace(tablename) && !string.IsNullOrWhiteSpace(wherefields))
+            {
+                string sql = "SELECT " + selectfields +  " FROM " + tablename + " WHERE " + GenerateWhereParameters(wherefields, param.Length);
+                mdr = ExecuteReader(sql, param);
+            }
+            return mdr;
+        }
+
+        public static MySqlDataReader Select(string tablename, string selectfields, params object[] param)
+        {
+            MySqlDataReader mdr = null;
+            if (!string.IsNullOrWhiteSpace(tablename))
+            {
+                string sql = "SELECT " + selectfields + " FROM " + tablename;
+                mdr = ExecuteReader(sql, param);
+            }
+            return mdr;
+        }
+
+        public static bool Delete(string tablename, string wherefields, params object[] param)
+        {
+            int result = 0;
+            if(!string.IsNullOrWhiteSpace(tablename))
+            {
+                string sql = "DELETE FROM " + tablename + " WHERE " + GenerateWhereParameters(wherefields);
+                result = ExecuteNonQuery(sql, param);
+            }
+            return (result > 0);
+        }
+
+        public static bool Delete(string tablename, params object[] param)
+        {
+            int result = 0;
+            if (!string.IsNullOrWhiteSpace(tablename))
+            {
+                string sql = "DELETE FROM " + tablename;
+                result = ExecuteNonQuery(sql, param);
+            }
+            return (result > 0);
         }
 
         public static bool Insert(string tablename, string insertfield, params object[] param)

@@ -3,17 +3,11 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
     <h3>Your contact page.</h3>
-    <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
-    </address>
-
-    <asp:Button runat="server" ID="btnTest" Text="Click" OnClick="btnTest_Click" />
-
-    <address>
-        <strong>Support:</strong><a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong><a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
+    <asp:FormView runat="server" ID="fvForm" DefaultMode="Insert" OnItemCommand="fvForm_ItemCommand">
+        <InsertItemTemplate>
+            <span>Nom: </span><asp:TextBox runat="server" ID="txtNom" />
+            <span>Prenom: </span><asp:TextBox runat="server" ID="txtPrenom" />
+            <asp:Button runat="server" ID="btnSend" CommandName="Insert"/>
+        </InsertItemTemplate>
+    </asp:FormView>
 </asp:Content>

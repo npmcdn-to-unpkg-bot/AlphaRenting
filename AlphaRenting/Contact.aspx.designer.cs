@@ -13,12 +13,12 @@ namespace AlphaRenting {
     public partial class Contact {
         
         /// <summary>
-        /// btnTest control.
+        /// fvForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTest;
+        protected global::System.Web.UI.WebControls.FormView fvForm;
     }
 }
