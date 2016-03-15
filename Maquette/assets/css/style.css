@@ -135,37 +135,37 @@ li
 
 .tile-left .front
 {
-	background-image: url(assets/img/slide1.jpg);
+	background-image: url(../img/slide1.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 .tile-left .back
 {
-	background-image: url(assets/img/slide2.jpg);
+	background-image: url(../img/slide2.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 .tile-center .front
 {
-	background-image: url(assets/img/slide3.jpg);
+	background-image: url(../img/slide4.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 .tile-center .back
 {
-	background-image: url(assets/img/slide4.jpg);
+	background-image: url(../img/slide3.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 .tile-right .front
 {
-	background-image: url(assets/img/slide5.jpg);
+	background-image: url(../img/slide5.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 .tile-right .back
 {
-	background-image: url(assets/img/slide6.jpg);
+	background-image: url(../img/slide6.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 }
