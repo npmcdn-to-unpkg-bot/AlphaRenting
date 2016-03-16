@@ -10,9 +10,16 @@ namespace AlphaRenting
 {
     public partial class MonProfil : System.Web.UI.Page
     {
+        private Comedien _user = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["user"] == null)
+                    Response.Redirect("~/MonProfil.aspx");
+                else
+                    _user = (Comedien)Session["user"];
+            }
         }
 
         protected void modifier_Click(object sender, EventArgs e)

@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <asp:FormView runat="server" ID="modifprofil" DefaultMode="Edit">
-            <InsertItemTemplate>
+            <EditItemTemplate>
                 <table>                   
                     <tr><td>Choisissez votre secteur : </td>
                     <td>
@@ -46,7 +46,7 @@
                         <asp:Button runat="server" ID="modifier" OnClick="modifier_Click" Text="Modifier Profil" /></td>
                     </tr>
                 </table>
-            </InsertItemTemplate>
+            </EditItemTemplate>
         </asp:FormView>
     </form>
 </body>
