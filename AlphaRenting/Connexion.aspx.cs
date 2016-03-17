@@ -40,7 +40,7 @@ namespace AlphaRenting
 
             if(obj.Id != 0)
             {
-                Session.Add("user", obj);
+                Tools.StoreObjectInSession(obj, this);
                 Response.Redirect("~/MonProfil.aspx");
             }
             else

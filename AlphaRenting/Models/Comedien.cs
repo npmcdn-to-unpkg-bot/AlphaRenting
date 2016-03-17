@@ -189,8 +189,8 @@ namespace AlphaRenting
 
         public bool Synchronize()
         {
-            if (DB.Update("Comedien", "nom,prenom,adresse_mail,password,secteur,age,sexe,departement,cv_url,photo_url,video_url,survey_id,has_complete_registration","id",
-                this._nom,this._prenom,this._adresse_mail,this._password,this._secteur,this._age,this._sexe,this._departement,this._cv_url,this._photo_url,this._video_url,this._survey_id,this._is_complete, this._id))
+            if (DB.Update("Comedien", "nom,prenom,secteur,age,sexe,departement,cv_url,photo_url,video_url,survey_id,has_complete_registration","id",
+                this._nom,this._prenom,this._secteur,this._age,this._sexe,this._departement,this._cv_url,this._photo_url,this._video_url,this._survey_id,this._is_complete, this._id))
                 return true;
             return false;
         }
