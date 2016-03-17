@@ -82,7 +82,7 @@ namespace AlphaRenting
                                                                                                        obj.Secteur, obj.Age,
                                                                                                        obj.Sexe, obj.Departement, obj.Complete))
                 {
-                    Session.Add("user", obj);
+                    Tools.StoreObjectInSession(obj, this);
                     Response.Redirect("~/MonProfil.aspx");
                 }
                 else

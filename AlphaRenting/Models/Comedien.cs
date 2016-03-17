@@ -75,7 +75,10 @@ namespace AlphaRenting
             }
             set
             {
-                this._password = PasswordHelper.HashPassword(value);
+                if (value != "")
+                    this._password = PasswordHelper.HashPassword(value);
+                else
+                    this._password = "";
             }
         }
         public char Secteur
@@ -199,14 +202,17 @@ namespace AlphaRenting
             string correctHash = null;
             using (mdr)
             {
-                if (mdr.HasRows)
+                if (mdr != null)
                 {
-                    mdr.Read();
-                    id = Convert.ToInt32(mdr[0]);
-                    correctHash = mdr[1] as string;
+                    if (mdr.HasRows)
+                    {
+                        mdr.Read();
+                        id = Convert.ToInt32(mdr[0]);
+                        correctHash = mdr[1] as string;
+                    }
+                    else
+                        return;
                 }
-                else
-                    return;
             }
             if(id>0)
             {

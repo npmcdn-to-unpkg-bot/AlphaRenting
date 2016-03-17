@@ -11,6 +11,12 @@ namespace AlphaRenting
 {
     public class Tools
     {
+        public static void StoreObjectInSession(Comedien obj, Page p)
+        {
+            obj.Password = "";
+            p.Session.Clear();
+            p.Session.Add("user", obj);
+        }
         public static int ConvertIntFromString(string text)
         {
             if (Regex.IsMatch(text, @"^[a-zA-Z]+$"))
@@ -24,7 +30,12 @@ namespace AlphaRenting
         }
         public static Comedien CreateComedienFromFormView(FormView fv)
         {
-            Comedien obj = new Comedien();
+            return CreateComedienFromFormView(fv, null);
+        }
+        public static Comedien CreateComedienFromFormView(FormView fv, Comedien obj)
+        {
+            if (obj == null)
+                obj = new Comedien();
             foreach (Control ctl in fv.Controls[0].Controls[1].Controls[0].Controls)
             {
                 if (ctl.GetType() == typeof(TextBox))
@@ -72,7 +83,7 @@ namespace AlphaRenting
             }
             return obj;
         }
-        public static bool SaveFileFromFileUpload(FileUpload fu, string save_path)
+        public static string SaveFileFromFileUpload(FileUpload fu, string save_path)
         {   
             if (fu.HasFile)
             {
@@ -81,16 +92,16 @@ namespace AlphaRenting
                 {
                     save_path += fu.FileName;
                     fu.SaveAs(save_path);
-                    return true;
+                    return fu.FileName;
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
             }
             else
             {
-                return false;
+                return null;
             }
         }
     }

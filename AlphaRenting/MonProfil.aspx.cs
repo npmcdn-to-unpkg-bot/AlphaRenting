@@ -19,19 +19,32 @@ namespace AlphaRenting
                     Response.Redirect("~/Connexion.aspx");
                 else
                     _user = (Comedien)Session["user"];
+                fvProfil.DataSource = new object[] { _user };
+                fvProfil.DataBind();
             }
-            fvProfil.DataSource = new object[] { _user };
-            fvProfil.DataBind();
         }
-        protected void UpdateToDb()
+        protected bool UpdateToDb(out Comedien dbobj)
         {
-            Comedien obj = Tools.CreateComedienFromFormView(fvProfil);
-            obj.Synchronize();
+            FileUpload fImg = (FileUpload)fvProfil.FindControl("fuImg");
+            FileUpload fVideo = (FileUpload)fvProfil.FindControl("fuVideo");
+            FileUpload fCv = (FileUpload)fvProfil.FindControl("fuCv");
+            Comedien obj = Tools.CreateComedienFromFormView(fvProfil, (Comedien)Session["user"]);
+            obj.Photo = Tools.SaveFileFromFileUpload(fImg, Server.MapPath("~/uploads/images/"));
+            obj.Video = Tools.SaveFileFromFileUpload(fVideo, Server.MapPath("~/uploads/videos/"));
+            obj.Cv = Tools.SaveFileFromFileUpload(fCv, Server.MapPath("~/uploads/cv/"));
+            dbobj = obj;
+            return obj.Synchronize();
         }
 
         protected void btnClick_Click(object sender, EventArgs e)
         {
-            UpdateToDb();
+            Comedien obj = null;
+            if(UpdateToDb(out obj))
+            {
+                Tools.StoreObjectInSession(obj, this);
+                fvProfil.DataSource = new object[] { obj };
+                fvProfil.DataBind();
+            }
         }
     }
 }

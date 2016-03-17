@@ -30,37 +30,20 @@ namespace AlphaRenting
             }
         }
 
-        private static List<MySqlParameter> GetListParameters(params object[] param)
+        private static void SetListParameters(MySqlParameterCollection mpc, params object[] param)
         {
             try
             {
-                List<MySqlParameter> mpc = new List<MySqlParameter>();
                 for (int i = 0; i <= param.Length - 1; i++)
                 {
-                    MySqlParameter sp = new MySqlParameter();
-                    sp.ParameterName = "@p" + (i+1).ToString();
-                    sp.Value = param[i];
-                    switch (Type.GetTypeCode(param[i].GetType()))
-                    {
-                        case TypeCode.String:
-                            sp.MySqlDbType = MySqlDbType.VarChar;
-                            break;
-                        case TypeCode.Int32:
-                            sp.MySqlDbType = MySqlDbType.Int32;
-                            break;
-                        case TypeCode.Decimal:
-                            sp.MySqlDbType = MySqlDbType.Decimal;
-                            break;
-                        default:
-                            break;
-                    }
-                    mpc.Add(sp);
+                    string ParameterName = "@p" + (i+1).ToString();
+                    mpc.AddWithValue(ParameterName, param[i]);
                 }
-                return mpc;
+                return;
             }
-            catch
+            catch(Exception ex)
             {
-                return null;
+                return;
             }
         }
 
@@ -113,14 +96,14 @@ namespace AlphaRenting
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = sql;
                 cmd.Connection = con;
-                cmd.Parameters.AddRange(GetListParameters(param).ToArray());
+                SetListParameters(cmd.Parameters, param);
 
                 int result = cmd.ExecuteNonQuery();
                 con.Close();
 
                 return result;
             }
-            catch
+            catch(Exception ex)
             {
                 return 0;
             }
@@ -138,7 +121,7 @@ namespace AlphaRenting
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = sql;
                 cmd.Connection = con;
-                cmd.Parameters.AddRange(GetListParameters(param).ToArray());
+                SetListParameters(cmd.Parameters, param);
 
                 MySqlDataReader mdr = cmd.ExecuteReader();
 
