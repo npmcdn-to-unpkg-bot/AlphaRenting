@@ -17,94 +17,184 @@ namespace AlphaRenting
         private int _age;
         private char _sexe;
         private int _departement;
-        private int _video_id;
-        private int _photoid_;
-        private string _cv;
+        private string _video_url;
+        private string _photo_url;
+        private string _cv_url;
+        private int _survey_id;
+        private bool _is_complete;
 
-        public int GetId()
+        public int Id
         {
-            return this._id;
+            get
+            {
+                return this._id; 
+            }
+            set
+            {
+                this._id = value;
+            }
         }
-        public void SetId(int id)
+        public string Nom
         {
-            this._id = id;
+            get
+            {
+                return this._nom;
+            }
+            set
+            {
+                this._nom = value;
+            }
+        }
+        public string Prenom
+        {
+            get
+            {
+                return this._prenom;
+            }
+            set
+            {
+                this._prenom = value;
+            }
+        }
+        public string Mail
+        {
+            get
+            {
+                return this._adresse_mail;
+            }
+            set
+            {
+                this._adresse_mail = value;
+            }
+        }
+        public string Password
+        {
+            get
+            {
+                return this._password;
+            }
+            set
+            {
+                this._password = PasswordHelper.HashPassword(value);
+            }
+        }
+        public char Secteur
+        {
+            get
+            {
+                return this._secteur;
+            }
+            set
+            {
+                this._secteur = value;
+            }
+        }
+        public int Age
+        {
+            get
+            {
+                return this._age;
+            }
+            set
+            {
+                this._age = value;
+            }
+        }
+        public char Sexe
+        {
+            get
+            {
+                return this._sexe;
+            }
+            set
+            {
+                this._sexe = value;
+            }
+        }
+        public int Departement
+        {
+            get
+            {
+                return this._departement;
+            }
+            set
+            {
+                this._departement = value;
+            }
+        }
+        public string Video
+        {
+            get
+            {
+                return this._video_url;
+            }
+            set
+            {
+                this._video_url = value;
+            }
+        }
+        public string Photo
+        {
+            get
+            {
+                return this._photo_url;
+            }
+            set
+            {
+                this._photo_url = value;
+            }
+        }
+        public string Cv
+        {
+            get
+            {
+                return this._cv_url;
+            }
+            set
+            {
+                this._cv_url = value;
+            }
+        }
+        public int Survey
+        {
+            get
+            {
+                return this._survey_id;
+            }
+            set
+            {
+                this._survey_id = value;
+            }
+        }
+        public bool Complete
+        {
+            get
+            {
+                return this._is_complete;
+            }
+            set
+            {
+                this._is_complete = value;
+            }
         }
 
-        public string GetNom()
+        public Comedien()
         {
-            return this._nom;
-        }
-        public void SetNom(string nom)
-        {
-            this._nom = nom;
+            this._is_complete = false;
+            this._survey_id = 0;
         }
 
-        public string GetPrenom()
+        public bool Synchronize()
         {
-            return this._prenom;
-        }
-        public void SetPrenom(string prenom)
-        {
-            this._prenom = prenom;
-        }
-
-        public string GetMail()
-        {
-            return this._prenom;
-        }
-        public void SetMail(string mail)
-        {
-            this._adresse_mail = mail;
-        }
-
-        public string GetPassword()
-        {
-            return this._password;
-        }
-        public void SetPassword(string password)
-        {
-            this._password = PasswordHelper.HashPassword(password);
-        }
-
-        public char GetSecteur()
-        {
-            return this._secteur;
-        }
-        public void SetSecteur(char secteur)
-        {
-            this._secteur = secteur;
-        }
-
-        public int GetAge()
-        {
-            return this._age;
-        }
-        public void SetAge(int age)
-        {
-            this._age = age;
-        }
-
-        public char GetSexe()
-        {
-            return this._sexe;
-        }
-        public void SetSexe(char sexe)
-        {
-            this._sexe = sexe;
-        }
-
-        public int GetDepartement()
-        {
-            return this._departement;
-        }
-        public void SetDepartement(int departement)
-        {
-            this._departement = departement;
+            if (DB.Update("Comedien", "nom,prenom,adresse_mail,password,secteur,age,sexe,departement,cv_url,photo_url,video_url,survey_id,has_complete_registration","id",
+                this._nom,this._prenom,this._adresse_mail,this._password,this._secteur,this._age,this._sexe,this._departement,this._cv_url,this._photo_url,this._video_url,this._survey_id,this._is_complete, this._id))
+                return true;
+            return false;
         }
 
         public void InitObjectFromCrendentials(string mail, string password)
         {
-            MySqlDataReader mdr = DB.ExecuteReader("SELECT id, password from comedien WHERE mail=@p1", mail);
+            MySqlDataReader mdr = DB.ExecuteReader("SELECT id, password from comedien WHERE adresse_mail=@p1", mail);
             int id = 0;
             string correctHash = null;
             using (mdr)
@@ -142,6 +232,11 @@ namespace AlphaRenting
                     this._age = Convert.ToInt32(mdr["age"]);
                     this._sexe = Convert.ToChar(mdr["sexe"]);
                     this._departement = Convert.ToInt32(mdr["departement"]);
+                    this._cv_url = mdr["cv_url"] as string;
+                    this._photo_url = mdr["photo_url"] as string;
+                    this._video_url = mdr["video_url"] as string;
+                    this._survey_id = Convert.ToInt32(mdr["survey_id"]);
+                    this._is_complete = Convert.ToBoolean(mdr["has_complete_registration"]);
                 }
             }
         }

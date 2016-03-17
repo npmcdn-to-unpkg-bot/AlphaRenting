@@ -9,43 +9,26 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:FormView runat="server" ID="modifprofil" DefaultMode="Edit">
+        <asp:FormView runat="server" ID="fvProfil" DefaultMode="Edit">
             <EditItemTemplate>
-                <table>                   
-                    <tr><td>Choisissez votre secteur : </td>
-                    <td>
-                        <asp:DropDownList runat="server" ID="Listederoulante" >
-                            <asp:ListItem Selected="true" Value="Comedien">Comedien</asp:ListItem>
-                            <asp:ListItem Value="Magicien">Magicien</asp:ListItem>
-                            <asp:ListItem Value="Hotesse">Hotesse</asp:ListItem>
-                        </asp:DropDownList></td>
-                    </tr>
-                    <tr><td>Age : </td>
-                        <td><asp:TextBox runat="server" ID="age" ToolTip="age" /></td>
-                    </tr>
-                    <tr><td>Adresse mail : </td>
-                        <td><asp:TextBox runat="server" ID="mail" ToolTip="adresse mail" /></td>
-                    </tr>
-                    <tr><td>Departement : </td>
-                    <td><asp:TextBox runat="server" ID="dep" ToolTip="Departement" /></td>
-                    </tr>
-                    <tr>
-                        <td> CV : <asp:FileUpload runat="server" ID="CV" /></br>
-                            <asp:Label runat="server" ID="LabelCV" Text="" /></td>
-                    </tr>
-                    <tr>
-                        <td>Photo : <asp:FileUpload runat="server" ID="photo" AllowMultiple="true" /></br>
-                            <asp:Label runat="server" ID="LabelPhoto" Text="" /></td>
-                    </tr>
-                    <tr>
-                        <td>Video : <asp:FileUpload runat="server" ID="video" /></br>
-                            <asp:Label runat="server" ID="LabelVideo" Text="" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <asp:Button runat="server" ID="modifier" OnClick="modifier_Click" Text="Modifier Profil" /></td>
-                    </tr>
-                </table>
+                <asp:TextBox runat="server" ID="txtNom" Text='<%# Eval("Nom") %>'></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtPrenom" Text='<%# Eval("Prenom") %>'></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtAge" Text='<%# Eval("Age") %>' TextMode="Number"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtMail" Text='<%# Eval("Mail") %>' TextMode="Email"></asp:TextBox>
+                <asp:DropDownList runat="server" ID="ddlSecteur" SelectedValue='<%# Bind("Secteur") %>'>
+                    <asp:ListItem Value="C" Text="Comedien"></asp:ListItem>
+                    <asp:ListItem Value="M" Text="Magicien"></asp:ListItem>
+                    <asp:ListItem Value="H" Text="Hotesse"></asp:ListItem>
+                </asp:DropDownList>
+                <asp:DropDownList runat="server" ID="ddlSexe" SelectedValue='<%# Bind("Sexe") %>'>
+                    <asp:ListItem Value="M" Text="Homme"></asp:ListItem>
+                    <asp:ListItem Value="F" Text="Femme"></asp:ListItem>
+                </asp:DropDownList>
+                <asp:TextBox runat="server" ID="txtDept" Text='<%# Eval("Departement") %>' TextMode="Number"></asp:TextBox>
+                <asp:FileUpload runat="server" ID="fuVideo" accept=".mp4,.avi" />
+                <asp:FileUpload runat="server" ID="fuCv" accept=".pdf" />
+                <asp:FileUpload runat="server" ID="fuImg" accept=".jpg,.jpeg,.png" />
+                <asp:Button runat="server" ID="btnClick" OnClick="btnClick_Click" />
             </EditItemTemplate>
         </asp:FormView>
     </form>

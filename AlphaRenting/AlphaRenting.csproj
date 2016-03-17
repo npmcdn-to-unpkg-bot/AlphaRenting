@@ -421,6 +421,7 @@
       <DependentUpon>Inscription.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Survey.cs" />
     <Compile Include="MonProfil.aspx.cs">
       <DependentUpon>MonProfil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

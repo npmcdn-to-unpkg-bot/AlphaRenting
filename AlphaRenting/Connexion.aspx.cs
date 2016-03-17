@@ -38,10 +38,17 @@ namespace AlphaRenting
             Comedien obj = new Comedien();
             obj.InitObjectFromCrendentials(mail, password);
 
-            if(obj.GetId() != 0)
+            if(obj.Id != 0)
             {
                 Session.Add("user", obj);
                 Response.Redirect("~/MonProfil.aspx");
+            }
+            else
+            {
+                Label lbl = (Label)fvConnexion.FindControl("lblMessage");
+                lbl.Text = "Erreur de login!";
+                lbl.ForeColor = System.Drawing.Color.Red;
+                lbl.Focus();
             }
         }
     }
