@@ -1,0 +1,103 @@
+.header-top {
+	height : 200px;
+	background-color:blue ;
+}
+.menu {
+	display : flex ;
+	list-style-type : none;
+	
+}
+.menu li {
+	margin-left :5px ;
+	text-decoration : none ;
+}
+.formulaire {
+	height : 600px; 
+	margin-top : 2% ;
+	width : 90 % ;
+	background-color: red ;
+	}
+.paddingcenter {
+	padding : 0px 12px ;
+}
+.textcenter {
+	font-weight : bold; 
+	margin-left : 20%;
+	
+}	
+.top-color {
+	background-color : #dcf5f5 ;
+	height : 70px;
+	margin-top : -1%;
+	
+}
+.separation {
+	margin-top :0px ;
+}
+.alertblue {
+  padding: 15px;
+  margin-bottom: 20px;
+  margin-left : 10% ;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+input[type="number"] {
+	width : 100% ;
+	padding-top :0px ;
+	border : none ;
+	padding-left : 0px ;
+}
+input[type="file"] {
+  display: block;
+  padding : 0px 0px;
+}
+/*Michaek */ 
+#nav {
+   background-color: #222;
+}
+#nav_wrapper {
+   width: 960px;
+   margin: 0 auto;
+   
+}
+#nav ul {
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+   position: relative;
+   min-width: 200px;
+}
+#nav ul li {
+   display: inline-block;
+   font-weight: bold;
+}
+#nav ul li:hover {
+   background-color: darkslategray;
+   transition: all 0.45s;
+   opacity: 0.9;
+   filter:alpha (opacity=90);
+}
+#nav ul li a, visited {
+   color: #CCC;
+   display: block;
+   padding: 15px;
+   text-decoration: none;
+}
+#nav ul li:hover ul {
+   display: block;
+}
+#nav ul ul {
+   display: none;
+   position: absolute;
+   background-color: #333;
+   border: 5px solid #222;
+   border-top: 0;
+   margin-left: -5px;
+}
+#nav ul ul li {
+   display: block;
+}
+#nav ul ul li a:hover {
+   color: #699;
+}

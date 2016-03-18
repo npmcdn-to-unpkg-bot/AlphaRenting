@@ -205,6 +205,87 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\custom.css" />
+    <Content Include="assets\css\inscription.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\css\styleVitrine.css" />
+    <Content Include="assets\img\2.png" />
+    <Content Include="assets\img\jordy1.jpg" />
+    <Content Include="assets\img\landscape1.jpg" />
+    <Content Include="assets\img\landscape10.jpg" />
+    <Content Include="assets\img\landscape11.jpg" />
+    <Content Include="assets\img\landscape12.jpg" />
+    <Content Include="assets\img\landscape13.jpg" />
+    <Content Include="assets\img\landscape14.jpg" />
+    <Content Include="assets\img\landscape15.jpg" />
+    <Content Include="assets\img\landscape16.jpg" />
+    <Content Include="assets\img\landscape17.jpg" />
+    <Content Include="assets\img\landscape18.jpg" />
+    <Content Include="assets\img\landscape2.jpg" />
+    <Content Include="assets\img\landscape3.jpg" />
+    <Content Include="assets\img\landscape4.jpg" />
+    <Content Include="assets\img\landscape5.jpg" />
+    <Content Include="assets\img\landscape6.jpg" />
+    <Content Include="assets\img\landscape7.jpg" />
+    <Content Include="assets\img\landscape8.jpg" />
+    <Content Include="assets\img\landscape9.jpg" />
+    <Content Include="assets\img\Logo-AR-Light.png" />
+    <Content Include="assets\img\Logo-AR.png" />
+    <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\profile.png" />
+    <Content Include="assets\img\rightpic.png" />
+    <Content Include="assets\img\slide1.jpg" />
+    <Content Include="assets\img\slide2.jpg" />
+    <Content Include="assets\img\slide3.jpg" />
+    <Content Include="assets\img\slide4.jpg" />
+    <Content Include="assets\img\slide5.jpg" />
+    <Content Include="assets\img\slide6.jpg" />
+    <Content Include="assets\img\studio1.jpg" />
+    <Content Include="assets\img\studio10.jpg" />
+    <Content Include="assets\img\studio11.jpg" />
+    <Content Include="assets\img\studio12.jpg" />
+    <Content Include="assets\img\studio13.jpg" />
+    <Content Include="assets\img\studio14.jpg" />
+    <Content Include="assets\img\studio15.jpg" />
+    <Content Include="assets\img\studio16.jpg" />
+    <Content Include="assets\img\studio17.jpg" />
+    <Content Include="assets\img\studio18.jpg" />
+    <Content Include="assets\img\studio19.jpg" />
+    <Content Include="assets\img\studio2.jpg" />
+    <Content Include="assets\img\studio20.jpg" />
+    <Content Include="assets\img\studio21.jpg" />
+    <Content Include="assets\img\studio22.jpg" />
+    <Content Include="assets\img\studio23.jpg" />
+    <Content Include="assets\img\studio24.jpg" />
+    <Content Include="assets\img\studio25.jpg" />
+    <Content Include="assets\img\studio26.jpg" />
+    <Content Include="assets\img\studio27.jpg" />
+    <Content Include="assets\img\studio3.jpg" />
+    <Content Include="assets\img\studio4.jpg" />
+    <Content Include="assets\img\studio5.jpg" />
+    <Content Include="assets\img\studio6.jpg" />
+    <Content Include="assets\img\studio7.jpg" />
+    <Content Include="assets\img\studio8.jpg" />
+    <Content Include="assets\img\studio9.jpg" />
+    <Content Include="assets\js\isotope.min.js" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\external\jquery\jquery.js" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\images\ui-icons_444444_256x240.png" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\images\ui-icons_555555_256x240.png" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\images\ui-icons_777620_256x240.png" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\images\ui-icons_777777_256x240.png" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\index.html" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\jquery-ui.css" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\jquery-ui.js" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\jquery-ui.min.css" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\jquery-ui.min.js" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\jquery-ui.structure.css" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\jquery-ui.structure.min.css" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\jquery-ui.theme.css" />
+    <Content Include="assets\js\jquery-ui-1.11.4.custom\jquery-ui.theme.min.css" />
+    <Content Include="assets\js\main.js" />
     <Content Include="Connexion.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -218,6 +299,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="assets\img\photothumb.db" />
+    <Content Include="assets\js\menu.script" />
+    <Content Include="assets\js\navbar.script" />
+    <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Inscription.aspx" />
     <Content Include="MonProfil.aspx" />
@@ -257,6 +342,7 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Voirprofil.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="packages.config" />
@@ -453,6 +539,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Voirprofil.aspx.cs">
+      <DependentUpon>Voirprofil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Voirprofil.aspx.designer.cs">
+      <DependentUpon>Voirprofil.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

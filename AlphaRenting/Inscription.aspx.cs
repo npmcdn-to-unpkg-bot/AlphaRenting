@@ -59,7 +59,7 @@ namespace AlphaRenting
         protected void fvInscription_ItemCommand(object sender, FormViewCommandEventArgs e)
         {
             FormView fv = (FormView)sender;
-            if (e.CommandName == "insert")
+            if (e.CommandName == "Insert")
             {
                 if (VerifyFormFields(fv))
                 {
@@ -75,6 +75,7 @@ namespace AlphaRenting
                     return;
                 }
 
+                string passwd = ((TextBox)fv.FindControl("txtPassword")).Text;
                 Comedien obj = Tools.CreateComedienFromFormView(fv);
 
                 if (DB.Insert("Comedien", "nom,prenom,adresse_mail,password,secteur,age,sexe,departement,has_complete_registration", obj.Nom, obj.Prenom,
@@ -82,6 +83,7 @@ namespace AlphaRenting
                                                                                                        obj.Secteur, obj.Age,
                                                                                                        obj.Sexe, obj.Departement, obj.Complete))
                 {
+                    obj.InitObjectFromCrendentials(obj.Mail, passwd);
                     Tools.StoreObjectInSession(obj, this);
                     Response.Redirect("~/MonProfil.aspx");
                 }
